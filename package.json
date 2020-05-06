@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "Express project developed with TypeORM.",
   "dependencies": {
+    "cookie-parser": "^1.4.5",
     "cross-env": "^7.0.2",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
@@ -23,8 +24,8 @@
     "webpack-cli": "^3.3.11"
   },
   "scripts": {
-    "dev": "cross-env NODE_ENV=development nodemon --watch src --exec 'ts-node' src",
-    "start": "cross-env NODE_ENV=production node dist/bundle.js",
+    "dev": "cross-env NODE_PATH=src NODE_ENV=development nodemon --watch src --exec 'ts-node' src",
+    "start": "cross-env NODE_PATH=src NODE_ENV=production node dist/bundle.js",
     "build": "webpack --config config/webpack.config.js"
   }
 }
