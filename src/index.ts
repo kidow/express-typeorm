@@ -3,7 +3,7 @@ import 'dotenv/config'
 import { createConnection } from 'typeorm'
 import * as express from 'express'
 import { Request, Response } from 'express'
-import { Routes } from './routes'
+import { Routes } from 'routes'
 import { User } from 'entities'
 import * as faker from 'faker/locale/ko'
 
