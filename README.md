@@ -1,7 +1,7 @@
-# Awesome Project Build with TypeORM
+# Express Project Start with TypeORM By Kidow
 
 Steps to run this project:
 
 1. Run `npm i` command
-2. Setup database settings inside `ormconfig.json` file
-3. Run `npm start` command
+2. Setup database settings inside `ormconfig.js` file
+3. Run `npm run dev` command
