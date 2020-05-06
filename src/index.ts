@@ -1,9 +1,13 @@
 import 'reflect-metadata'
+import 'dotenv/config'
 import { createConnection } from 'typeorm'
 import * as express from 'express'
 import { Request, Response } from 'express'
 import { Routes } from './routes'
 import { User } from './entities/User'
+import * as faker from 'faker/locale/ko'
+
+const PORT = process.env.PORT || 4000
 
 createConnection()
   .then(async (connection) => {
@@ -29,26 +33,17 @@ createConnection()
     // ...
 
     // start express server
-    app.listen(4000)
+    app.listen(PORT)
 
     // insert new users for test
     await connection.manager.save(
       connection.manager.create(User, {
-        firstName: 'Timber',
-        lastName: 'Saw',
-        age: 27
-      })
-    )
-    await connection.manager.save(
-      connection.manager.create(User, {
-        firstName: 'Phantom',
-        lastName: 'Assassin',
-        age: 24
+        firstName: faker.name.lastName(),
+        lastName: faker.name.firstName(),
+        age: faker.random.number(99)
       })
     )
 
-    console.log(
-      'Express server has started on port 4000. Open http://localhost:4000/users to see results'
-    )
+    console.log(`Express server has started on port ${PORT}.`)
   })
-  .catch((error) => console.log(error))
+  .catch((err) => console.log(err))
