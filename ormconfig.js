@@ -1,3 +1,5 @@
+const isProduction = process.env.NODE_ENV === 'production'
+
 module.exports = {
   type: 'mysql',
   host: 'localhost',
@@ -14,5 +16,6 @@ module.exports = {
     entitiesDir: 'src/entities',
     migrationsDir: 'src/migrations',
     subscribersDir: 'src/subscriber'
-  }
+  },
+  dropSchema: !isProduction
 }

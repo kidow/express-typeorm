@@ -15,11 +15,12 @@
     "@types/faker": "^4.1.11",
     "@types/node": "^13.13.5",
     "faker": "^4.1.0",
+    "nodemon": "^2.0.3",
     "ts-node": "^8.10.1",
     "typescript": "^3.8.3"
   },
   "scripts": {
-    "dev": "cross-env NODE_ENV=development ts-node src",
+    "dev": "cross-env NODE_ENV=development nodemon --watch src --exec 'ts-node' src",
     "start": "cross-env NODE_ENV=production ts-node src"
   }
 }
