@@ -1,4 +1,4 @@
-import { UserController } from './controllers/UserController'
+import { UserController } from 'controllers'
 
 export const Routes = [
   {

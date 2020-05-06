@@ -1,4 +1,4 @@
-const path = require('path')
+const { resolve } = require('path')
 
 process.env.NODE_ENV = 'production'
 
@@ -25,7 +25,7 @@ module.exports = function (env, options) {
     },
     output: {
       filename: 'bundle.js',
-      path: path.resolve(__dirname, '../dist')
+      path: resolve(__dirname, '../dist')
     }
   }
 }
