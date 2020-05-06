@@ -16,11 +16,15 @@
     "@types/node": "^13.13.5",
     "faker": "^4.1.0",
     "nodemon": "^2.0.3",
+    "ts-loader": "^7.0.2",
     "ts-node": "^8.10.1",
-    "typescript": "^3.8.3"
+    "typescript": "^3.8.3",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11"
   },
   "scripts": {
     "dev": "cross-env NODE_ENV=development nodemon --watch src --exec 'ts-node' src",
-    "start": "cross-env NODE_ENV=production ts-node src"
+    "start": "cross-env NODE_ENV=production node dist/bundle.js",
+    "build": "webpack --config config/webpack.config.js"
   }
 }
