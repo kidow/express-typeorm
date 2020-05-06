@@ -6,6 +6,8 @@ import { Request, Response } from 'express'
 import { Routes } from 'routes'
 import { User } from 'entities'
 import * as faker from 'faker/locale/ko'
+import * as cookieParser from 'cookie-parser'
+import * as morgan from 'morgan'
 
 const PORT = process.env.PORT || 4000
 
@@ -13,7 +15,10 @@ createConnection()
   .then(async (connection) => {
     // create express app
     const app = express()
+    app.use(morgan('dev'))
     app.use(express.json())
+    app.use(express.urlencoded({ extended: false }))
+    app.use(cookieParser())
 
     // register express routes from defined application routes
     Routes.forEach((route) => {
