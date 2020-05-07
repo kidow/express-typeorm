@@ -1,5 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, BaseEntity, CreateDateColumn } from 'typeorm'
 import { uuid } from 'utils'
+import { IsEmail } from 'class-validator'
 
 @Entity({ name: 'users' })
 export default class User extends BaseEntity {
@@ -14,6 +15,10 @@ export default class User extends BaseEntity {
     default: uuid()
   })
   uuid: string
+
+  @Column()
+  @IsEmail()
+  email: string
 
   @Column()
   name: string

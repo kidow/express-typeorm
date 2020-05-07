@@ -44,7 +44,8 @@ createConnection()
     await manager.save(
       manager.create(User, {
         name: faker.name.lastName() + faker.name.firstName(),
-        age: faker.random.number(99)
+        age: faker.random.number(99),
+        email: faker.internet.email()
       })
     )
 
