@@ -9,8 +9,6 @@ import * as cookieParser from 'cookie-parser'
 import * as morgan from 'morgan'
 import User from 'entities/User'
 
-console.log('User', User)
-
 const PORT = process.env.PORT || 4000
 
 createConnection()

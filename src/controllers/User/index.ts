@@ -1,6 +1,6 @@
 import { getRepository } from 'typeorm'
 import { NextFunction, Request, Response } from 'express'
-import { User } from 'entities'
+import User from 'entities/User'
 
 export default class UserController {
   private userRepository = getRepository(User)
