@@ -45,23 +45,6 @@ createConnection()
     await manager.save(
       manager.create(User, {
         name: faker.name.lastName() + faker.name.firstName(),
-        age: faker.random.number(99),
-        email: `${faker.random.number(100000)}@example.com`,
-        uuid: uuid()
-      })
-    )
-    await manager.save(
-      manager.create(User, {
-        name: faker.name.lastName() + faker.name.firstName(),
-        age: faker.random.number(99),
-        email: `${faker.random.number(100000)}@example.com`,
-        uuid: uuid()
-      })
-    )
-    await manager.save(
-      manager.create(User, {
-        name: faker.name.lastName() + faker.name.firstName(),
-        age: faker.random.number(99),
         email: `${faker.random.number(100000)}@example.com`,
         uuid: uuid()
       })
