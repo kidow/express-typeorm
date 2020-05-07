@@ -43,8 +43,7 @@ createConnection()
     // insert new users for test
     await manager.save(
       manager.create(User, {
-        firstName: faker.name.lastName(),
-        lastName: faker.name.firstName(),
+        name: faker.name.lastName() + faker.name.firstName(),
         age: faker.random.number(99)
       })
     )

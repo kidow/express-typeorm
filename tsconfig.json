@@ -10,6 +10,6 @@
     "sourceMap": true,
     "baseUrl": "./src"
   },
-  "include": ["src/**/*.ts", "src/**/*.js"],
+  "include": ["src/**/*.ts"],
   "exclude": ["node_modules"]
 }

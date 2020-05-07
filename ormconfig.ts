@@ -10,13 +10,13 @@ const options: ConnectionOptions = {
   password: '1234',
   database: 'skyblue',
   synchronize: true,
-  logging: !isProduction,
+  logging: false,
   entities: ['src/entities/**/*.ts'],
   migrations: ['src/migrations/**/*.ts'],
   subscribers: ['src/subscribers/**/*.ts'],
   cli: {
     entitiesDir: 'src/entities',
-    migrationsDir: 'migrations',
+    migrationsDir: 'src/migrations',
     subscribersDir: 'src/subscribers'
   },
   dropSchema: !isProduction
