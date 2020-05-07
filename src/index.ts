@@ -9,6 +9,7 @@ import * as cookieParser from 'cookie-parser'
 import * as morgan from 'morgan'
 import User from 'entities/User'
 import { uuid } from 'utils'
+import Post from 'entities/Post'
 
 const PORT = process.env.PORT || 4000
 
@@ -42,13 +43,22 @@ createConnection()
     app.listen(PORT)
 
     // insert new users for test
-    await manager.save(
+    const user = await manager.save(
       manager.create(User, {
         name: faker.name.lastName() + faker.name.firstName(),
         email: `${faker.random.number(100000)}@example.com`,
         uuid: uuid()
       })
     )
+    // await manager.save(
+    //   manager
+    //     .create(Post, {
+    //       title: faker.random.word(),
+    //       content: faker.random.words(),
+    //       user
+    //     })
+    //     .save()
+    // )
 
     console.log(`Express server has started on port ${PORT}.`)
   })

@@ -1,6 +1,7 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn } from 'typeorm'
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, OneToMany } from 'typeorm'
 import { IsEmail, Length } from 'class-validator'
 import { ValidationEntity } from '../'
+import Post from 'entities/Post'
 
 @Entity({ name: 'users' })
 export default class User extends ValidationEntity {
@@ -37,4 +38,7 @@ export default class User extends ValidationEntity {
 
   @Column({ nullable: true })
   deleted_at: Date
+
+  @OneToMany(() => Post, (post) => post.user)
+  posts: Post[]
 }
