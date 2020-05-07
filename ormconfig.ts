@@ -16,8 +16,8 @@ const options: ConnectionOptions = {
   subscribers: ['src/subscribers/**/*.ts'],
   cli: {
     entitiesDir: 'src/entities',
-    migrationsDir: 'src/migrations',
-    subscribersDir: 'src/subscriber'
+    migrationsDir: 'migrations',
+    subscribersDir: 'src/subscribers'
   },
   dropSchema: !isProduction
 }
