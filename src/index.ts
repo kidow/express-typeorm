@@ -4,15 +4,17 @@ import { createConnection } from 'typeorm'
 import * as express from 'express'
 import { Request, Response } from 'express'
 import { Routes } from 'routes'
-import { User } from 'entities'
 import * as faker from 'faker/locale/ko'
 import * as cookieParser from 'cookie-parser'
 import * as morgan from 'morgan'
+import User from 'entities/User'
+
+console.log('User', User)
 
 const PORT = process.env.PORT || 4000
 
 createConnection()
-  .then(async (connection) => {
+  .then(async ({ manager }) => {
     // create express app
     const app = express()
     app.use(morgan('dev'))
@@ -41,8 +43,8 @@ createConnection()
     app.listen(PORT)
 
     // insert new users for test
-    await connection.manager.save(
-      connection.manager.create(User, {
+    await manager.save(
+      manager.create(User, {
         firstName: faker.name.lastName(),
         lastName: faker.name.firstName(),
         age: faker.random.number(99)

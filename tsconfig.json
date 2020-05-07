@@ -8,10 +8,7 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "sourceMap": true,
-    "baseUrl": "./src",
-    "paths": {
-      "*": ["*"]
-    }
+    "baseUrl": "./src"
   },
   "include": ["src/**/*.ts", "src/**/*.js"],
   "exclude": ["node_modules"]

@@ -1,6 +1,8 @@
+import { ConnectionOptions } from 'typeorm'
+
 const isProduction = process.env.NODE_ENV === 'production'
 
-module.exports = {
+const options: ConnectionOptions = {
   type: 'mysql',
   host: 'localhost',
   port: 3306,
@@ -8,7 +10,7 @@ module.exports = {
   password: '1234',
   database: 'skyblue',
   synchronize: true,
-  logging: false,
+  logging: !isProduction,
   entities: ['src/entities/**/*.ts'],
   migrations: ['src/migrations/**/*.ts'],
   subscribers: ['src/subscribers/**/*.ts'],
@@ -19,3 +21,5 @@ module.exports = {
   },
   dropSchema: !isProduction
 }
+
+export = options
