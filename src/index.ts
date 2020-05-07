@@ -8,6 +8,7 @@ import * as faker from 'faker/locale/ko'
 import * as cookieParser from 'cookie-parser'
 import * as morgan from 'morgan'
 import User from 'entities/User'
+import { uuid } from 'utils'
 
 const PORT = process.env.PORT || 4000
 
@@ -45,7 +46,24 @@ createConnection()
       manager.create(User, {
         name: faker.name.lastName() + faker.name.firstName(),
         age: faker.random.number(99),
-        email: faker.internet.email()
+        email: `${faker.random.number(100000)}@example.com`,
+        uuid: uuid()
+      })
+    )
+    await manager.save(
+      manager.create(User, {
+        name: faker.name.lastName() + faker.name.firstName(),
+        age: faker.random.number(99),
+        email: `${faker.random.number(100000)}@example.com`,
+        uuid: uuid()
+      })
+    )
+    await manager.save(
+      manager.create(User, {
+        name: faker.name.lastName() + faker.name.firstName(),
+        age: faker.random.number(99),
+        email: `${faker.random.number(100000)}@example.com`,
+        uuid: uuid()
       })
     )
 
