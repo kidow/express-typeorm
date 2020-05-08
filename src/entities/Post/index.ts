@@ -4,10 +4,12 @@ import {
   Column,
   CreateDateColumn,
   ManyToOne,
-  JoinColumn
+  JoinColumn,
+  OneToMany
 } from 'typeorm'
 import { ValidationEntity } from '../'
 import User from 'entities/User'
+import Comment from 'entities/Comment'
 
 @Entity({ name: 'posts' })
 export default class Post extends ValidationEntity {
@@ -26,4 +28,7 @@ export default class Post extends ValidationEntity {
   @ManyToOne(() => User, (user) => user.posts, { onDelete: 'CASCADE' })
   @JoinColumn()
   user: User
+
+  @OneToMany(() => Comment, (comment) => comment.post)
+  comments: Comment[]
 }
