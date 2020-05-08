@@ -17,7 +17,8 @@
     "mysql": "^2.18.1",
     "reflect-metadata": "^0.1.13",
     "typeorm": "0.2.24",
-    "typeorm-naming-strategies": "^1.1.0"
+    "typeorm-naming-strategies": "^1.1.0",
+    "typeorm-seeding": "^1.6.1"
   },
   "devDependencies": {
     "@types/bcrypt": "^3.0.0",

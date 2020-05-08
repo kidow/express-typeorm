@@ -13,7 +13,7 @@ import { ValidationEntity } from '../'
 import Post from 'entities/Post'
 import Comment from 'entities/Comment'
 import Group from 'entities/Group'
-import Profile from 'entities/Profile'
+import UserProfile from 'entities/UserProfile'
 
 @Entity({ name: 'users' })
 export default class User extends ValidationEntity {
@@ -51,9 +51,9 @@ export default class User extends ValidationEntity {
   @Column({ nullable: true })
   deletedAt: Date
 
-  @OneToOne(() => Profile)
+  @OneToOne(() => UserProfile)
   @JoinColumn()
-  profile: Profile
+  profile: UserProfile
 
   @OneToMany(() => Post, (post) => post.user)
   @JoinColumn()

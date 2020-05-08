@@ -14,7 +14,7 @@ import Post from 'entities/Post'
 import Comment from 'entities/Comment'
 import { SnakeNamingStrategy } from 'typeorm-naming-strategies'
 import Group from 'entities/Group'
-import Profile from 'entities/Profile'
+import UserProfile from 'entities/UserProfile'
 
 const PORT = process.env.PORT || 4000
 
@@ -50,7 +50,7 @@ getConnectionOptions().then((connectionOptions) =>
       app.listen(PORT)
 
       // insert new users for test
-      const profile = await Profile.create({
+      const profile = await UserProfile.create({
         age: faker.random.number(99),
         imageUrl: faker.random.image()
       }).save()

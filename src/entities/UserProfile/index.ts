@@ -1,9 +1,8 @@
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn } from 'typeorm'
-import { ValidationEntity } from '../'
-import { Max } from 'class-validator'
+import { ValidationEntity } from '..'
 
 @Entity({ name: 'user_profiles' })
-export default class Profile extends ValidationEntity {
+export default class UserProfile extends ValidationEntity {
   @PrimaryGeneratedColumn()
   id: number
 
