@@ -1,4 +1,5 @@
 import { ConnectionOptions } from 'typeorm'
+import { SnakeNamingStrategy } from 'typeorm-naming-strategies'
 
 const isProduction = process.env.NODE_ENV === 'production'
 
@@ -19,7 +20,8 @@ const options: ConnectionOptions = {
     migrationsDir: 'src/migrations',
     subscribersDir: 'src/subscribers'
   },
-  dropSchema: !isProduction
+  dropSchema: !isProduction,
+  namingStrategy: new SnakeNamingStrategy()
 }
 
 export = options
