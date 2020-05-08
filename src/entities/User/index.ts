@@ -4,12 +4,14 @@ import {
   Column,
   CreateDateColumn,
   OneToMany,
-  JoinColumn
+  JoinColumn,
+  ManyToMany
 } from 'typeorm'
 import { IsEmail, Length } from 'class-validator'
 import { ValidationEntity } from '../'
 import Post from 'entities/Post'
 import Comment from 'entities/Comment'
+import Group from 'entities/Group'
 
 @Entity({ name: 'users' })
 export default class User extends ValidationEntity {
@@ -53,4 +55,7 @@ export default class User extends ValidationEntity {
 
   @OneToMany(() => Comment, (comment) => comment.user)
   comments: Comment[]
+
+  @ManyToMany(() => Group, (group) => group.users)
+  groups: Group[]
 }

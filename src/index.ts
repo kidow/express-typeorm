@@ -12,6 +12,7 @@ import { uuid } from 'utils'
 import Post from 'entities/Post'
 import Comment from 'entities/Comment'
 import { SnakeNamingStrategy } from 'typeorm-naming-strategies'
+import Group from 'entities/Group'
 
 const PORT = process.env.PORT || 4000
 
@@ -46,17 +47,22 @@ getConnectionOptions().then((connectionOptions) =>
       app.listen(PORT)
 
       // insert new users for test
+      const groups: Group[] = [
+        await Group.create({ name: faker.company.companySuffix() }).save(),
+        await Group.create({ name: faker.company.companySuffix() }).save()
+      ]
       const user = await User.create({
         name: faker.name.lastName() + faker.name.firstName(),
         email: `${faker.random.number(100000)}@example.com`,
-        uuid: uuid()
+        uuid: uuid(),
+        groups
       }).save()
       const post = await Post.create({
         title: faker.random.word(),
         content: faker.random.words(),
         user
       }).save()
-      const comment = await Comment.create({
+      await Comment.create({
         content: faker.lorem.sentence(),
         user,
         post
