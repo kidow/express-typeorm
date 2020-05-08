@@ -13,6 +13,10 @@ export class UserRepository extends Repository<User> {
     return await this.userRepository.findOne({ where: { uuid } })
   }
 
+  async findByEmail(email: string) {
+    return await this.userRepository.findOne({ where: { email } })
+  }
+
   // async store(body: User) {
   //   return await this.userRepository.create(body).save()
   // }
