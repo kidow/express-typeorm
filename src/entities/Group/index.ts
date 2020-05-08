@@ -14,7 +14,7 @@ export default class Group extends ValidationEntity {
   @PrimaryGeneratedColumn()
   id: number
 
-  @Column()
+  @Column({ nullable: false })
   name: string
 
   @CreateDateColumn()

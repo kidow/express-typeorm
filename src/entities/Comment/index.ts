@@ -15,7 +15,7 @@ export default class Comment extends ValidationEntity {
   @PrimaryGeneratedColumn()
   id: number
 
-  @Column()
+  @Column({ nullable: false })
   content: string
 
   @CreateDateColumn()

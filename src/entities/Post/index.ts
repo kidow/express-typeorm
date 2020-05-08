@@ -16,10 +16,10 @@ export default class Post extends ValidationEntity {
   @PrimaryGeneratedColumn()
   id: number
 
-  @Column()
+  @Column({ nullable: false })
   title: string
 
-  @Column()
+  @Column({ nullable: false })
   content: string
 
   @CreateDateColumn()
