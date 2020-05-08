@@ -5,13 +5,15 @@ import {
   CreateDateColumn,
   OneToMany,
   JoinColumn,
-  ManyToMany
+  ManyToMany,
+  OneToOne
 } from 'typeorm'
 import { IsEmail, Length } from 'class-validator'
 import { ValidationEntity } from '../'
 import Post from 'entities/Post'
 import Comment from 'entities/Comment'
 import Group from 'entities/Group'
+import Profile from 'entities/Profile'
 
 @Entity({ name: 'users' })
 export default class User extends ValidationEntity {
@@ -48,6 +50,10 @@ export default class User extends ValidationEntity {
 
   @Column({ nullable: true })
   deletedAt: Date
+
+  @OneToOne(() => Profile)
+  @JoinColumn()
+  profile: Profile
 
   @OneToMany(() => Post, (post) => post.user)
   @JoinColumn()

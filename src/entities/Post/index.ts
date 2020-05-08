@@ -25,6 +25,12 @@ export default class Post extends ValidationEntity {
   @CreateDateColumn()
   createdAt: Date
 
+  @Column({ nullable: true })
+  updatedAt: Date
+
+  @Column({ nullable: true })
+  deletedAt: Date
+
   @ManyToOne(() => User, (user) => user.posts, { onDelete: 'CASCADE' })
   @JoinColumn()
   user: User

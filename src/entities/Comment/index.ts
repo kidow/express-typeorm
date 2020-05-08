@@ -21,6 +21,12 @@ export default class Comment extends ValidationEntity {
   @CreateDateColumn()
   createdAt: Date
 
+  @Column({ nullable: true })
+  updatedAt: Date
+
+  @Column({ nullable: true })
+  deletedAt: Date
+
   @ManyToOne(() => User, (user) => user.comments, { onDelete: 'CASCADE' })
   @JoinColumn()
   user: User

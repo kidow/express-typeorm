@@ -20,6 +20,12 @@ export default class Group extends ValidationEntity {
   @CreateDateColumn()
   createdAt: Date
 
+  @Column({ nullable: true })
+  updatedAt: Date
+
+  @Column({ nullable: true })
+  deletedAt: Date
+
   @ManyToMany(() => User, (user) => user.groups, { onDelete: 'CASCADE' })
   @JoinTable()
   users: User[]
