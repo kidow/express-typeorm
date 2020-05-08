@@ -8,11 +8,11 @@ import * as faker from 'faker/locale/ko'
 import * as cookieParser from 'cookie-parser'
 import * as morgan from 'morgan'
 import * as cors from 'cors'
-import User from 'entities/User'
 import { uuid } from 'utils'
+import { SnakeNamingStrategy } from 'typeorm-naming-strategies'
+import User from 'entities/User'
 import Post from 'entities/Post'
 import Comment from 'entities/Comment'
-import { SnakeNamingStrategy } from 'typeorm-naming-strategies'
 import Group from 'entities/Group'
 import UserProfile from 'entities/UserProfile'
 
@@ -21,7 +21,7 @@ const PORT = process.env.PORT || 4000
 getConnectionOptions()
   .then((connectionOptions) =>
     createConnection({ ...connectionOptions, namingStrategy: new SnakeNamingStrategy() })
-      .then(async ({ manager }) => {
+      .then(async () => {
         // create express app
         const app = express()
         app.use(morgan('dev'))
@@ -69,11 +69,13 @@ getConnectionOptions()
         const post = await Post.create({
           title: faker.random.word(),
           content: faker.random.words(),
+          uuid: uuid(),
           user
         }).save()
         await Comment.create({
           content: faker.lorem.sentence(),
           user,
+          uuid: uuid(),
           post
         }).save()
 

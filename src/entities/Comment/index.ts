@@ -9,11 +9,22 @@ import {
 import { ValidationEntity } from '../'
 import User from 'entities/User'
 import Post from 'entities/Post'
+import { Length } from 'class-validator'
 
 @Entity({ name: 'comments' })
 export default class Comment extends ValidationEntity {
   @PrimaryGeneratedColumn()
   id: number
+
+  @Column({
+    unique: true,
+    nullable: false,
+    length: 32,
+    update: false,
+    type: 'char'
+  })
+  @Length(32, 32)
+  uuid: string
 
   @Column({ nullable: false })
   content: string
