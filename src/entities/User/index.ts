@@ -39,13 +39,13 @@ export default class User extends ValidationEntity {
   name: string
 
   @CreateDateColumn()
-  created_at: Date
+  createdAt: Date
 
   @Column({ nullable: true })
-  updated_at: Date
+  updatedAt: Date
 
   @Column({ nullable: true })
-  deleted_at: Date
+  deletedAt: Date
 
   @OneToMany(() => Post, (post) => post.user)
   @JoinColumn()
