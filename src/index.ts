@@ -7,6 +7,7 @@ import { Routes } from 'routes'
 import * as faker from 'faker/locale/ko'
 import * as cookieParser from 'cookie-parser'
 import * as morgan from 'morgan'
+import * as cors from 'cors'
 import User from 'entities/User'
 import { uuid } from 'utils'
 import Post from 'entities/Post'
@@ -25,6 +26,7 @@ getConnectionOptions().then((connectionOptions) =>
       app.use(morgan('dev'))
       app.use(express.json())
       app.use(express.urlencoded({ extended: false }))
+      app.use(cors())
       app.use(cookieParser())
 
       // register express routes from defined application routes
