@@ -1,13 +1,11 @@
 const { resolve } = require('path')
+const Dotenv = require('dotenv-webpack')
 
 process.env.NODE_ENV = 'production'
 
 module.exports = function (env, options) {
-  console.log('env', env)
-  const isEnvDevelopment = env === 'development'
-  const isEnvProduction = env === 'production'
   return {
-    mode: isEnvProduction ? 'production' : isEnvDevelopment ? 'development' : 'none',
+    mode: 'production',
     entry: './src/index.ts',
     module: {
       rules: [
@@ -21,11 +19,35 @@ module.exports = function (env, options) {
     devtool: 'source-map',
     target: 'node',
     resolve: {
-      extensions: ['.ts', '.js']
+      extensions: ['.ts', '.js', '.tsx'],
+      alias: {
+        entities: resolve(__dirname, '../src/entities/'),
+        routes: resolve(__dirname, '../src/routes/'),
+        controllers: resolve(__dirname, '../src/controllers/'),
+        utils: resolve(__dirname, '../src/utils/'),
+        repositories: resolve(__dirname, '../src/repositories/'),
+        subscribers: resolve(__dirname, '../src/subscribers/')
+      }
     },
     output: {
       filename: 'bundle.js',
       path: resolve(__dirname, '../dist')
+    },
+    plugins: [new Dotenv({ path: '../.env' })],
+    externals: {
+      'pg-native': {},
+      '@sap/hdbext': {},
+      ioredis: {},
+      mongodb: {},
+      mssql: {},
+      mysql2: {},
+      oracledb: {},
+      pg: {},
+      'pg-query-stream': {},
+      'react-native-sqlite-storage': {},
+      'sql.js': {},
+      sqlite3: {},
+      'typeorm-aurora-data-api-driver': {}
     }
   }
 }

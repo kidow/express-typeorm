@@ -16,6 +16,7 @@ import Group from 'entities/Group'
 import UserProfile from 'entities/UserProfile'
 
 const PORT = process.env.PORT || 4000
+const isProd = process.env.NODE_ENV === 'production'
 
 createConnection()
   .then(async () => {
@@ -24,6 +25,7 @@ createConnection()
     app.use(morgan('dev'))
     app.use(express.json())
     app.use(express.urlencoded({ extended: false }))
+    if (isProd) app.use(express.static(__dirname + '/dist'))
     app.use(cors())
     app.use(cookieParser())
 
