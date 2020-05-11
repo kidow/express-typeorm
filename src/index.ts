@@ -7,47 +7,47 @@ import { Routes } from 'routes'
 import * as faker from 'faker/locale/ko'
 import * as cookieParser from 'cookie-parser'
 import * as morgan from 'morgan'
-import * as cors from 'cors'
 import { uuid } from 'utils'
 import User from 'entities/User'
 import Post from 'entities/Post'
 import Comment from 'entities/Comment'
 import Group from 'entities/Group'
 import UserProfile from 'entities/UserProfile'
+import { useExpressServer } from 'routing-controllers'
 
 const PORT = process.env.PORT || 4000
 const isProd = process.env.NODE_ENV === 'production'
 
 createConnection()
   .then(async () => {
-    // create express app
     const app = express()
     app.use(morgan('dev'))
     app.use(express.json())
     app.use(express.urlencoded({ extended: false }))
     if (isProd) app.use(express.static(__dirname + '/dist'))
-    app.use(cors())
     app.use(cookieParser())
 
     // register express routes from defined application routes
-    Routes.forEach((route) => {
-      app[route.method](route.route, (req: Request, res: Response, next: Function) => {
-        const result = new route.controller()[route.action](req, res, next)
-        if (result instanceof Promise) {
-          result.then((result) =>
-            result !== null && result !== undefined ? res.send(result) : undefined
-          )
-        } else if (result !== null && result !== undefined) {
-          res.json(result)
-        }
-      })
-    })
-
+    // Routes.forEach((route) => {
+    //   app[route.method](route.route, (req: Request, res: Response, next: Function) => {
+    //     const result = new route.controller()[route.action](req, res, next)
+    //     if (result instanceof Promise) {
+    //       result.then((result) =>
+    //         result !== null && result !== undefined ? res.send(result) : undefined
+    //       )
+    //     } else if (result !== null && result !== undefined) {
+    //       res.json(result)
+    //     }
+    //   })
+    // })
     // setup express app here
     // ...
-
-    // start express server
-    app.listen(PORT)
+    useExpressServer(app, {
+      controllers: [__dirname + '/controllers/**/*.ts'],
+      middlewares: [__dirname + '/middlewares/**/*.ts'],
+      cors: true,
+      defaultErrorHandler: false
+    }).listen(PORT)
 
     // insert new users for test
     const profile = await UserProfile.create({
@@ -80,4 +80,4 @@ createConnection()
 
     console.log(`Express server has started on port ${PORT}.`)
   })
-  .catch((err) => console.log(err))
+  .catch((err) => console.log('createConnection err: ', err))

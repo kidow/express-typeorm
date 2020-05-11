@@ -1,24 +1,34 @@
 import { getRepository } from 'typeorm'
-import { NextFunction, Request, Response } from 'express'
 import User from 'entities/User'
+import { JsonController, Param, Body, Get, Post, Put, Delete } from 'routing-controllers'
 
+@JsonController()
 export default class UserController {
-  private userRepository = getRepository(User)
+  private repository = getRepository(User)
 
-  async all() {
-    return await this.userRepository.find()
+  @Get('/users')
+  async getAll() {
+    return await this.repository.find()
   }
 
-  async one(req: Request) {
-    return await this.userRepository.findOne(req.params.id)
+  @Get('/users/:id')
+  async getOne(@Param('id') id: number) {
+    return await this.repository.findOne(id)
   }
 
-  async save(req: Request) {
-    return await this.userRepository.save(req.body)
+  @Post('/users')
+  async post(@Body() user: User) {
+    return await this.repository.save(user)
   }
 
-  async remove(req: Request) {
-    let userToRemove = await this.userRepository.findOne(req.params.id)
-    await this.userRepository.remove(userToRemove)
+  @Put('/users/:id')
+  put(@Param('id') id: number, @Body() user: User) {
+    return 'Updating a user...'
+  }
+
+  @Delete('/users/:id')
+  async remove(@Param('id') id: number) {
+    const userToRemove = await this.repository.findOne(id)
+    return await this.repository.remove(userToRemove)
   }
 }
