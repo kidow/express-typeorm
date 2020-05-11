@@ -1,24 +1,24 @@
-import { getRepository } from 'typeorm'
 import User from 'entities/User'
 import { JsonController, Param, Body, Get, Post, Put, Delete } from 'routing-controllers'
+import { UserRepository } from 'repositories'
 
 @JsonController()
 export default class UserController {
-  private repository = getRepository(User)
+  private userRepo = new UserRepository()
 
   @Get('/users')
   async getAll() {
-    return await this.repository.find()
+    return await this.userRepo.findAll()
   }
 
   @Get('/users/:id')
   async getOne(@Param('id') id: number) {
-    return await this.repository.findOne(id)
+    return await this.userRepo.findById(id)
   }
 
   @Post('/users')
   async post(@Body() user: User) {
-    return await this.repository.save(user)
+    return await this.userRepo.store(user)
   }
 
   @Put('/users/:id')
@@ -28,7 +28,7 @@ export default class UserController {
 
   @Delete('/users/:id')
   async remove(@Param('id') id: number) {
-    const userToRemove = await this.repository.findOne(id)
-    return await this.repository.remove(userToRemove)
+    const userToRemove = await this.userRepo.findById(id)
+    return await this.userRepo.remove(userToRemove)
   }
 }
