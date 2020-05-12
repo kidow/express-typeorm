@@ -4,7 +4,10 @@ import {
   BeforeUpdate,
   Column,
   Generated,
-  CreateDateColumn
+  CreateDateColumn,
+  UpdateDateColumn,
+  DeleteDateColumn,
+  Unique
 } from 'typeorm'
 import * as faker from 'faker/locale/ko'
 import { validateOrReject } from 'class-validator'
@@ -17,6 +20,7 @@ export class ValidationEntity extends BaseEntity {
   }
 }
 
+@Unique(['uuid'])
 export class UUIDEntity extends ValidationEntity {
   @Column()
   @Generated('uuid')
@@ -33,10 +37,10 @@ export class DateEntity extends ValidationEntity {
   @CreateDateColumn()
   createdAt: Date
 
-  @Column({ nullable: true })
+  @UpdateDateColumn({ nullable: true })
   updatedAt: Date
 
-  @Column({ nullable: true })
+  @DeleteDateColumn({ nullable: true })
   deletedAt: Date
 }
 
