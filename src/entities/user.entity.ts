@@ -6,29 +6,20 @@ import {
   OneToMany,
   JoinColumn,
   ManyToMany,
-  OneToOne
+  OneToOne,
+  Generated
 } from 'typeorm'
 import { IsEmail, Length } from 'class-validator'
-import { ValidationEntity } from '.'
+import { UUIDEntity } from '.'
 import Post from 'entities/post.entity'
 import Comment from 'entities/comment.entitiy'
 import Group from 'entities/group.entity'
 import UserProfile from 'entities/user-profile.entity'
 
 @Entity({ name: 'users' })
-export default class User extends ValidationEntity {
+export default class User extends UUIDEntity {
   @PrimaryGeneratedColumn()
   id: number
-
-  @Column({
-    unique: true,
-    nullable: false,
-    length: 32,
-    update: false,
-    type: 'char'
-  })
-  @Length(32, 32)
-  uuid: string
 
   @Column({ default: 2, nullable: false, type: 'tinyint' })
   status: number

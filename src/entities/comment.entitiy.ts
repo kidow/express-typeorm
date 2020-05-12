@@ -4,27 +4,18 @@ import {
   ManyToOne,
   JoinColumn,
   Column,
-  CreateDateColumn
+  CreateDateColumn,
+  Generated
 } from 'typeorm'
-import { ValidationEntity } from '.'
+import { UUIDEntity } from '.'
 import Post from 'entities/post.entity'
 import { Length } from 'class-validator'
 import User from 'entities/user.entity'
 
 @Entity({ name: 'comments' })
-export default class Comment extends ValidationEntity {
+export default class Comment extends UUIDEntity {
   @PrimaryGeneratedColumn()
   id: number
-
-  @Column({
-    unique: true,
-    nullable: false,
-    length: 32,
-    update: false,
-    type: 'char'
-  })
-  @Length(32, 32)
-  uuid: string
 
   @Column({ nullable: false })
   content: string

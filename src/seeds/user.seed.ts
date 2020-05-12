@@ -12,6 +12,6 @@ export default class CreateUser implements Seeder {
     await factory(Group)().createMany(2)
     await factory(User)().create()
     await factory(Post)().create()
-    await factory(Comment)().create()
+    await factory(Comment)().create
   }
 }
