@@ -8,7 +8,7 @@ import {
   OneToMany
 } from 'typeorm'
 import { ValidationEntity } from '.'
-import User from '../entities/user.entity'
+import User from 'entities/user.entity'
 import Comment from 'entities/comment.entitiy'
 import { Length } from 'class-validator'
 

@@ -1,8 +1,8 @@
 import { define, factory } from 'typeorm-seeding'
 import * as Faker from 'faker'
-import Post from '../entities/post.entity'
+import Post from 'entities/post.entity'
 import { uuid } from 'utils'
-import User from '../entities/user.entity'
+import User from 'entities/user.entity'
 
 define(Post, (faker: typeof Faker) => {
   const post = new Post()

@@ -10,10 +10,10 @@ import {
 } from 'typeorm'
 import { IsEmail, Length } from 'class-validator'
 import { ValidationEntity } from '.'
-import Post from '../entities/post.entity'
-import Comment from '../entities/comment.entitiy'
-import Group from '../entities/group.entity'
-import UserProfile from '../entities/user-profile.entity'
+import Post from 'entities/post.entity'
+import Comment from 'entities/comment.entitiy'
+import Group from 'entities/group.entity'
+import UserProfile from 'entities/user-profile.entity'
 
 @Entity({ name: 'users' })
 export default class User extends ValidationEntity {

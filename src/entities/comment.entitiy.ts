@@ -7,9 +7,9 @@ import {
   CreateDateColumn
 } from 'typeorm'
 import { ValidationEntity } from '.'
-import User from '../entities/user.entity'
-import Post from '../entities/post.entity'
+import Post from 'entities/post.entity'
 import { Length } from 'class-validator'
+import User from 'entities/user.entity'
 
 @Entity({ name: 'comments' })
 export default class Comment extends ValidationEntity {

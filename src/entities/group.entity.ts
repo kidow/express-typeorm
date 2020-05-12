@@ -7,7 +7,7 @@ import {
   CreateDateColumn
 } from 'typeorm'
 import { ValidationEntity } from '.'
-import User from '../entities/user.entity'
+import User from 'entities/user.entity'
 
 @Entity({ name: 'groups' })
 export default class Group extends ValidationEntity {

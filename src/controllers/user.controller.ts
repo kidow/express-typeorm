@@ -1,6 +1,6 @@
-import User from '../entities/user.entity'
 import { JsonController, Param, Body, Get, Post, Put, Delete } from 'routing-controllers'
-import UserRepository from '../repositories/user.repository'
+import { UserRepository } from 'repositories'
+import User from 'entities/user.entity'
 
 @JsonController()
 export default class UserController {
