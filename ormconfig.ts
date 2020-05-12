@@ -1,9 +1,14 @@
 import { ConnectionOptions } from 'typeorm'
 import { SnakeNamingStrategy } from 'typeorm-naming-strategies'
 
+type ExtendConnectionOptions = {
+  seeds: string[]
+  factories: string[]
+}
+
 const isProduction = process.env.NODE_ENV === 'production'
 
-const options: ConnectionOptions = {
+const options: ConnectionOptions & ExtendConnectionOptions = {
   type: 'mysql',
   host: 'localhost',
   port: 3306,
@@ -21,7 +26,9 @@ const options: ConnectionOptions = {
     subscribersDir: 'src/subscribers'
   },
   dropSchema: !isProduction,
-  namingStrategy: new SnakeNamingStrategy()
+  namingStrategy: new SnakeNamingStrategy(),
+  seeds: ['src/seeds/**.*.ts'],
+  factories: ['src/factories/**.*.ts']
 }
 
 export = options

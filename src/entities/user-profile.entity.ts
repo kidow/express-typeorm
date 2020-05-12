@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn } from 'typeorm'
-import { ValidationEntity } from '..'
+import { ValidationEntity } from '.'
 
 @Entity({ name: 'user_profiles' })
 export default class UserProfile extends ValidationEntity {

@@ -6,8 +6,8 @@ import {
   JoinTable,
   CreateDateColumn
 } from 'typeorm'
-import { ValidationEntity } from '../'
-import User from 'entities/User'
+import { ValidationEntity } from '.'
+import User from '../entities/user.entity'
 
 @Entity({ name: 'groups' })
 export default class Group extends ValidationEntity {

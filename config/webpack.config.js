@@ -26,7 +26,10 @@ module.exports = function (env, options) {
         controllers: resolve(__dirname, '../src/controllers/'),
         utils: resolve(__dirname, '../src/utils/'),
         repositories: resolve(__dirname, '../src/repositories/'),
-        subscribers: resolve(__dirname, '../src/subscribers/')
+        subscribers: resolve(__dirname, '../src/subscribers/'),
+        factories: resolve(__dirname, '../src/factories/'),
+        seeds: resolve(__dirname, '../src/seeds/'),
+        tests: resolve(__dirname, '../src/tests/')
       }
     },
     output: {

@@ -44,6 +44,7 @@
     "dev": "cross-env NODE_PATH=src NODE_ENV=development nodemon --watch src --exec 'ts-node' src",
     "start": "cross-env NODE_ENV=production node dist/bundle.js",
     "build": "webpack --config config/webpack.config.js",
-    "migrate:create": "npx typeorm migration:create -d ./src/migrations -n"
+    "migrate:create": "npx typeorm migration:create -d ./src/migrations -n",
+    "seed:run": "cross-env NODE_PATH=src ts-node ./node_modules/typeorm-seeding/dist/cli.js seed"
   }
 }

@@ -9,11 +9,11 @@ import {
   OneToOne
 } from 'typeorm'
 import { IsEmail, Length } from 'class-validator'
-import { ValidationEntity } from '../'
-import Post from 'entities/Post'
-import Comment from 'entities/Comment'
-import Group from 'entities/Group'
-import UserProfile from 'entities/UserProfile'
+import { ValidationEntity } from '.'
+import Post from '../entities/post.entity'
+import Comment from '../entities/comment.entitiy'
+import Group from '../entities/group.entity'
+import UserProfile from '../entities/user-profile.entity'
 
 @Entity({ name: 'users' })
 export default class User extends ValidationEntity {

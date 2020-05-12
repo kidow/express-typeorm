@@ -1,19 +1,18 @@
 import {
   Entity,
   PrimaryGeneratedColumn,
-  Column,
-  CreateDateColumn,
   ManyToOne,
   JoinColumn,
-  OneToMany
+  Column,
+  CreateDateColumn
 } from 'typeorm'
-import { ValidationEntity } from '../'
-import User from 'entities/User'
-import Comment from 'entities/Comment'
+import { ValidationEntity } from '.'
+import User from '../entities/user.entity'
+import Post from '../entities/post.entity'
 import { Length } from 'class-validator'
 
-@Entity({ name: 'posts' })
-export default class Post extends ValidationEntity {
+@Entity({ name: 'comments' })
+export default class Comment extends ValidationEntity {
   @PrimaryGeneratedColumn()
   id: number
 
@@ -28,9 +27,6 @@ export default class Post extends ValidationEntity {
   uuid: string
 
   @Column({ nullable: false })
-  title: string
-
-  @Column({ nullable: false })
   content: string
 
   @CreateDateColumn()
@@ -42,10 +38,11 @@ export default class Post extends ValidationEntity {
   @Column({ nullable: true })
   deletedAt: Date
 
-  @ManyToOne(() => User, (user) => user.posts, { onDelete: 'CASCADE' })
+  @ManyToOne(() => User, (user) => user.comments, { onDelete: 'CASCADE' })
   @JoinColumn()
   user: User
 
-  @OneToMany(() => Comment, (comment) => comment.post)
-  comments: Comment[]
+  @ManyToOne(() => Post, (post) => post.comments, { onDelete: 'CASCADE' })
+  @JoinColumn()
+  post: Post
 }
