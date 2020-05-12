@@ -1,20 +1,10 @@
-import {
-  Entity,
-  PrimaryGeneratedColumn,
-  Column,
-  CreateDateColumn,
-  ManyToOne,
-  JoinColumn,
-  OneToMany,
-  Generated
-} from 'typeorm'
-import { UUIDEntity } from '.'
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn, OneToMany } from 'typeorm'
+import { DateUUIDEntity } from '.'
 import User from 'entities/user.entity'
 import Comment from 'entities/comment.entitiy'
-import { Length } from 'class-validator'
 
 @Entity({ name: 'posts' })
-export default class Post extends UUIDEntity {
+export default class Post extends DateUUIDEntity {
   @PrimaryGeneratedColumn()
   id: number
 
@@ -23,15 +13,6 @@ export default class Post extends UUIDEntity {
 
   @Column({ nullable: false })
   content: string
-
-  @CreateDateColumn()
-  createdAt: Date
-
-  @Column({ nullable: true })
-  updatedAt: Date
-
-  @Column({ nullable: true })
-  deletedAt: Date
 
   @ManyToOne(() => User, (user) => user.posts, { onDelete: 'CASCADE' })
   @JoinColumn()

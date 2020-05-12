@@ -2,22 +2,20 @@ import {
   Entity,
   PrimaryGeneratedColumn,
   Column,
-  CreateDateColumn,
   OneToMany,
   JoinColumn,
   ManyToMany,
-  OneToOne,
-  Generated
+  OneToOne
 } from 'typeorm'
 import { IsEmail, Length } from 'class-validator'
-import { UUIDEntity } from '.'
+import { DateUUIDEntity } from '.'
 import Post from 'entities/post.entity'
 import Comment from 'entities/comment.entitiy'
 import Group from 'entities/group.entity'
 import UserProfile from 'entities/user-profile.entity'
 
 @Entity({ name: 'users' })
-export default class User extends UUIDEntity {
+export default class User extends DateUUIDEntity {
   @PrimaryGeneratedColumn()
   id: number
 
@@ -32,15 +30,6 @@ export default class User extends UUIDEntity {
   @Column({ nullable: false, length: 25 })
   @Length(1, 25)
   name: string
-
-  @CreateDateColumn()
-  createdAt: Date
-
-  @Column({ nullable: true })
-  updatedAt: Date
-
-  @Column({ nullable: true })
-  deletedAt: Date
 
   @OneToOne(() => UserProfile)
   @JoinColumn()

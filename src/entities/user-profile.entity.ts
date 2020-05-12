@@ -1,8 +1,8 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn } from 'typeorm'
-import { ValidationEntity } from '.'
+import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm'
+import { DateEntity } from '.'
 
 @Entity({ name: 'user_profiles' })
-export default class UserProfile extends ValidationEntity {
+export default class UserProfile extends DateEntity {
   @PrimaryGeneratedColumn()
   id: number
 
@@ -11,13 +11,4 @@ export default class UserProfile extends ValidationEntity {
 
   @Column({ nullable: false, default: 0 })
   age?: number
-
-  @CreateDateColumn()
-  createdAt: Date
-
-  @Column({ nullable: true })
-  updatedAt: Date
-
-  @Column({ nullable: true })
-  deletedAt: Date
 }
