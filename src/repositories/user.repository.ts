@@ -21,12 +21,8 @@ export default class UserRepository extends Repository<User> {
     return await this.userRepo.create(user).save()
   }
 
-  // async store(body: User) {
-  //   return await this.userRepo.create(body).save()
-  // }
-
-  // async remove(uuid: string) {
-  //   const user = await this.userRepo.findOne({ where: { uuid } })
-  //   await this.userRepo.remove(user)
-  // }
+  async removeOne(id: number) {
+    const user = await this.userRepo.findOne({ where: { id } })
+    await this.userRepo.remove(user)
+  }
 }

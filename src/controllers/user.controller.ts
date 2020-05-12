@@ -7,18 +7,18 @@ export default class UserController {
   private userRepo = new UserRepository()
 
   @Get('/users')
-  async getAll() {
-    return await this.userRepo.findAll()
+  getAll() {
+    return this.userRepo.findAll()
   }
 
   @Get('/users/:id')
-  async getOne(@Param('id') id: number) {
-    return await this.userRepo.findById(id)
+  getOne(@Param('id') id: number) {
+    return this.userRepo.findById(id)
   }
 
   @Post('/users')
-  async post(@Body() user: User) {
-    return await this.userRepo.store(user)
+  post(@Body() user: User) {
+    return this.userRepo.store(user)
   }
 
   @Put('/users/:id')
@@ -27,8 +27,7 @@ export default class UserController {
   }
 
   @Delete('/users/:id')
-  async remove(@Param('id') id: number) {
-    const userToRemove = await this.userRepo.findById(id)
-    return await this.userRepo.remove(userToRemove)
+  remove(@Param('id') id: number) {
+    return this.userRepo.removeOne(id)
   }
 }

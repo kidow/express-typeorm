@@ -10,7 +10,7 @@ define(User, (faker: typeof Faker) => {
   user.name = faker.name.lastName() + faker.name.firstName()
   user.email = `${faker.random.number(100000)}@example.com`
   user.uuid = uuid()
-  user.groups = factory(Group)().createMany(2) as any
+  user.groups = factory(Group)() as any
   user.profile = factory(UserProfile)() as any
   return user
 })
