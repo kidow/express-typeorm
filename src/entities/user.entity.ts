@@ -31,7 +31,7 @@ export default class User extends DateUUIDEntity {
   @Length(1, 25)
   name: string
 
-  @OneToOne(() => UserProfile)
+  @OneToOne(() => UserProfile, { eager: true })
   @JoinColumn()
   profile: UserProfile
 

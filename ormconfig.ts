@@ -1,14 +1,14 @@
 import { ConnectionOptions } from 'typeorm'
 import { SnakeNamingStrategy } from 'typeorm-naming-strategies'
 
-type ExtendConnectionOptions = {
+type SeedConfigurationOptions = {
   seeds: string[]
   factories: string[]
 }
 
 const isProduction = process.env.NODE_ENV === 'production'
 
-const options: ConnectionOptions & ExtendConnectionOptions = {
+const options: ConnectionOptions & SeedConfigurationOptions = {
   type: 'mysql',
   host: 'localhost',
   port: 3306,

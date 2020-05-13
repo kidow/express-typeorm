@@ -26,6 +26,7 @@ export class UUIDEntity extends ValidationEntity {
   @Generated('uuid')
   uuid: string
 
+  // 버퍼 형식으로 저장하고 가져오려면?
   @BeforeInsert()
   protected uuidset() {
     const tokens = faker.random.uuid().split('-')
@@ -44,6 +45,7 @@ export class DateEntity extends ValidationEntity {
   deletedAt: Date
 }
 
+// 다중 클래스 상속은 불가능한가?
 export class DateUUIDEntity extends DateEntity {
   @Column()
   @Generated('uuid')

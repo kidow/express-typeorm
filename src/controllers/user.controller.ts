@@ -1,11 +1,13 @@
 import { JsonController, Param, Body, Get, Post, Put, Delete } from 'routing-controllers'
 import { UserRepository } from 'repositories'
 import User from 'entities/user.entity'
+// entity가 모듈화가 안돼
 
 @JsonController()
 export default class UserController {
   private userRepo = new UserRepository()
 
+  // /v1 식의 버전 라우팅이 필요할까?
   @Get('/users')
   getAll() {
     return this.userRepo.findAll()

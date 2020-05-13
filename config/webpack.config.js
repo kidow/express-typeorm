@@ -36,7 +36,7 @@ module.exports = function (env, options) {
       filename: 'bundle.js',
       path: resolve(__dirname, '../dist')
     },
-    plugins: [new Dotenv({ path: '../.env' })],
+    plugins: [new Dotenv({ path: resolve(__dirname, '../.env') })],
     externals: {
       'pg-native': {},
       '@sap/hdbext': {},
@@ -50,7 +50,12 @@ module.exports = function (env, options) {
       'react-native-sqlite-storage': {},
       'sql.js': {},
       sqlite3: {},
-      'typeorm-aurora-data-api-driver': {}
+      'typeorm-aurora-data-api-driver': {},
+      'koa-bodyparser': {},
+      kcors: {},
+      'koa-multer': {},
+      'koa-router': {},
+      koa: {}
     }
   }
 }

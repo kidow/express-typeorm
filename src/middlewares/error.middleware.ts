@@ -3,7 +3,7 @@ import { Request, Response } from 'express'
 
 @Middleware({ type: 'after' })
 export default class CustomErrorHandler implements ExpressErrorMiddlewareInterface {
-  error(err: any, req: Request, res: Response) {
-    res.status(err.status || 500).json({ success: false, message: err.message })
+  error(error: any, req: Request, res: Response) {
+    res.status(error.status || 500).json({ success: false, message: error.message, error })
   }
 }
