@@ -23,7 +23,8 @@ pipeline {
             channel: '${env.SLACK_CHANNEL}', 
             color: 'good',
             token: "${env.SLACK_TOKEN}",
-            message: '${SLACK_PREFIX} success', blocks: '.', token: '${SLACK_CHANNEL}'
+            message: '${SLACK_PREFIX} success', 
+            token: '${SLACK_CHANNEL}'
           )
         }
         failure {
@@ -31,7 +32,8 @@ pipeline {
             channel: '${env.SLACK_CHANNEL}', 
             color: 'danger', 
             token: "${env.SLACK_TOKEN}",
-            message: '${SLACK_PREFIX} failure', blocks: '.', token: '${SLACK_CHANNEL}'
+            message: '${SLACK_PREFIX} failure', 
+            token: '${SLACK_CHANNEL}'
           )
         }
       }
