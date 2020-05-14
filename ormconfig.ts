@@ -17,9 +17,9 @@ const options: ConnectionOptions & SeedConfigurationOptions = {
   database: 'skyblue',
   synchronize: true,
   logging: false,
-  entities: ['src/entities/**/*.ts'],
+  entities: ['src/entities/**/*.entity.ts'],
   migrations: ['src/migrations/**/*.ts'],
-  subscribers: ['src/subscribers/**/*.ts'],
+  subscribers: ['src/subscribers/**/*.subscriber.ts'],
   cli: {
     entitiesDir: 'src/entities',
     migrationsDir: 'src/migrations',
@@ -27,8 +27,8 @@ const options: ConnectionOptions & SeedConfigurationOptions = {
   },
   dropSchema: !isProduction,
   namingStrategy: new SnakeNamingStrategy(),
-  seeds: ['src/seeds/**.*.ts'],
-  factories: ['src/factories/**.*.ts']
+  seeds: ['src/seeds/**.*.seed.ts'],
+  factories: ['src/factories/**.*.factory.ts']
 }
 
 export = options

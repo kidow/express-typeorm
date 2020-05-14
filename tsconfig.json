@@ -7,9 +7,9 @@
     "outDir": "./dist",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "sourceMap": true,
+    "sourceMap": false,
     "baseUrl": "./src"
   },
   "include": ["src/**/*.ts"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "dist", "config"]
 }

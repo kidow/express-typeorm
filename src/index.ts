@@ -22,8 +22,6 @@ createConnection()
       middlewares: [__dirname + '/middlewares/**/*.ts'],
       cors: true,
       defaultErrorHandler: false
-    }).listen(PORT)
-
-    console.log(`Express server has started on port ${PORT}.`)
+    }).listen(PORT, () => console.log(`Express server has started on port ${PORT}.`))
   })
   .catch((err) => console.log('createConnection err: ', err))

@@ -1,7 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn, OneToMany } from 'typeorm'
 import { DateUUIDEntity } from '.'
 import User from 'entities/user.entity'
-import Comment from 'entities/comment.entitiy'
+import Comment from 'entities/comment.entity'
 
 @Entity({ name: 'posts' })
 export default class Post extends DateUUIDEntity {

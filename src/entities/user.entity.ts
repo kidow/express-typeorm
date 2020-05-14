@@ -10,7 +10,7 @@ import {
 import { IsEmail, Length } from 'class-validator'
 import { DateUUIDEntity } from '.'
 import Post from 'entities/post.entity'
-import Comment from 'entities/comment.entitiy'
+import Comment from 'entities/comment.entity'
 import Group from 'entities/group.entity'
 import UserProfile from 'entities/user-profile.entity'
 

@@ -1,6 +1,6 @@
 import { define, factory } from 'typeorm-seeding'
 import * as Faker from 'faker'
-import Comment from 'entities/comment.entitiy'
+import Comment from 'entities/comment.entity'
 import User from 'entities/user.entity'
 import Post from 'entities/post.entity'
 

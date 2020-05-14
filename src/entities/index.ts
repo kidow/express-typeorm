@@ -36,7 +36,7 @@ export class UUIDEntity extends ValidationEntity {
 
 export class DateEntity extends ValidationEntity {
   @CreateDateColumn()
-  createdAt: Date
+  readonly createdAt: Date
 
   @UpdateDateColumn({ nullable: true })
   updatedAt: Date
@@ -46,6 +46,7 @@ export class DateEntity extends ValidationEntity {
 }
 
 // 다중 클래스 상속은 불가능한가?
+@Unique(['uuid'])
 export class DateUUIDEntity extends DateEntity {
   @Column()
   @Generated('uuid')
