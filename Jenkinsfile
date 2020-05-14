@@ -1,7 +1,7 @@
 pipeline {
   agent {
     node {
-      label 'slack-notification'
+      label 'master'
     }
   environment {
       SLACK_CHANNEL = '#dev-project'
