@@ -1,18 +1,26 @@
-version: '3.7'
+version: '3'
 
 services:
-  rdb:
-    container_name: rdb
+  db:
+    container_name: mysql
     image: mysql:5.7.27
     restart: always
     environment:
-      - MYSQL_USER=root
-      - MYSQL_PASSWORD=1234
-      - MYSQL_ROOT_PASSWORD=1234
-      - MYSQL_DATABASE=skyblue
-      - TZ=Asia/Seoul
+      MYSQL_USER: root
+      MYSQL_PASSWORD: 1234
+      MYSQL_ROOT_PASSWORD: 1234
+      MYSQL_DATABASE: skyblue
+      TZ: Asia/Seoul
     ports:
       - '3306:3306'
     command: ['mysqld', '--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci']
+  jenkins:
+    container_name: blueocean
+    image: jenkinsci/blueocean:latest
+    restart: always
+    ports:
+      - '8080:8080'
     volumes:
-      - '/c/data/mysql:/var/lib/mysql'
+      - './jenkins_home:/var/jenkins_home'
+    environment:
+      TZ: 'Asia/Seoul'
