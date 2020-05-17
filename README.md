@@ -6,3 +6,4 @@ Steps to run this project:
 2. Setup database settings inside `ormconfig.ts` file
 3. Run `npm run dev` command
 4. Create Dummy Data By Running `npm run seed:run` command
+5. Test Jenkins
