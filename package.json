@@ -42,9 +42,11 @@
   },
   "scripts": {
     "dev": "cross-env NODE_PATH=src NODE_ENV=development nodemon src/index.ts",
-    "start": "cross-env NODE_PATH=src NODE_ENV=production node dist/bundle.js",
-    "build": "webpack --config config/webpack.config.js",
+    "start": "cross-env NODE_PATH=src NODE_ENV=production node build/src",
+    "prebuild": "rm -rf build",
+    "build": "tsc --project ./tsconfig.json",
     "migrate:create": "npx typeorm migration:create -d ./src/migrations -n",
-    "seed:run": "cross-env NODE_PATH=src ts-node ./node_modules/typeorm-seeding/dist/cli.js seed"
+    "seed:run": "cross-env NODE_PATH=src ts-node ./node_modules/typeorm-seeding/dist/cli.js seed",
+    "compose:dev": "docker-compose up -d --build"
   }
 }

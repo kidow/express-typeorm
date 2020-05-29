@@ -4,12 +4,11 @@
     "target": "es5",
     "module": "commonjs",
     "moduleResolution": "node",
-    "outDir": "./dist",
+    "outDir": "./build",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "sourceMap": false,
     "baseUrl": "./src"
   },
-  "include": ["src/**/*.ts"],
-  "exclude": ["node_modules", "dist", "config"]
+  "include": ["src/**/*.ts", "ormconfig.ts"],
+  "exclude": ["node_modules", "build", "config"]
 }
