@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "Express project developed with TypeORM.",
   "dependencies": {
-    "bcrypt": "^4.0.1",
+    "bcrypt": "^5.0.0",
     "cheerio": "^1.0.0-rc.3",
     "class-transformer": "^0.2.3",
     "class-validator": "^0.12.2",
